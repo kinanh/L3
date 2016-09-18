@@ -1,0 +1,9 @@
+.\time.o: Time.c
+.\time.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\time.o: C:\Keil\ARM\ARMCC\bin\..\include\stdlib.h
+.\time.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
+.\time.o: ..\../inc/tm4c123gh6pm.h
+.\time.o: PLL.h
+.\time.o: fixed.h
+.\time.o: ST7735.h
+.\time.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
