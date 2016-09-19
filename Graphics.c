@@ -689,6 +689,7 @@ void DrawClockInit (void){
 	int32_t y;
 	int32_t lx;
 	int32_t ly;
+	ST7735_FillScreen(ST7735_WHITE);
 	ST7735_DrawCharS(61,15,'1',ST7735_BLACK,ST7735_WHITE,1);
 	ST7735_DrawCharS(66,15,'2',ST7735_BLACK,ST7735_WHITE,1);
 	
@@ -836,6 +837,7 @@ void day(void){
 }
 
 void DigitalInit(void){
+	ST7735_FillScreen(ST7735_WHITE);
 	ST7735_DrawCharS(55,80,':',ST7735_BLACK,ST7735_WHITE,3);
 }
 void DigitalHour(int32_t h){
