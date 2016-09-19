@@ -3,8 +3,8 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
-C:\Users\kinan\Documents\7.0 Courses 2016 Fall\EE 445L\Lab-3\Lab3\ST7735.uvproj
-Project File Date:  09/15/2016
+C:\Users\lenalim\Documents\ValvanoWareTM4C123\L3\ST7735.uvproj
+Project File Date:  09/18/2016
 
 <h2>Output:</h2>
 Rebuild target 'ST7735'
@@ -36,48 +36,19 @@ compiling Time.c...
 Time.c(52): warning:  #550-D: variable "sr" was set but never used
   void SysTick_Init(uint32_t period){long sr;
 Time.c: 1 warning, 0 errors
+compiling SysTick.c...
 linking...
-Program Size: Code=9264 RO-data=2344 RW-data=64 ZI-data=1024  
-".\ST7735.axf" - 0 Error(s), 8 Warning(s).
-Load "C:\\Users\\kinan\\Documents\\7.0 Courses 2016 Fall\\EE 445L\\Lab-3\\Lab3\\ST7735.axf" 
-Connecting: Mode=JTAG, Speed=1000000Hz
-Erase Done.
-Programming Done.
-Verify OK.
-rawHarambe (referred from main.o).
+.\ST7735.axf: Error: L6200E: Symbol SysTick_Init multiply defined (by systick.o and time.o).
 Not enough information to list image symbols.
-Finished: 1 information, 0 warning and 1 error messages.
-".\ST7735.axf" - 1 Error(s), 10 Warning(s).
+Not enough information to list the image map.
+Finished: 2 information, 0 warning and 1 error messages.
+".\ST7735.axf" - 1 Error(s), 8 Warning(s).
 Target not created
-renced
-        int32_t ly;
-Graphics.c(858): warning:  #1-D: last line of file ends without a newline
-        
-Graphics.c: 3 warnings, 0 errors
-"Graphics.c" - 0 Error(s), 3 Warning(s).
-arning:  #223-D: function "DelayWait10ms" declared implicitly
-      DelayWait10ms(100);
-main.c(313): warning:  #223-D: function "DelayWait10ms" declared implicitly
-      DelayWait10ms(1000);
-main.c: 16 warnings, 3 errors
-".\ST7735.axf" - 3 Error(s), 16 Warning(s).
+information, 0 warning and 1 error messages.
+".\ST7735.axf" - 1 Error(s), 9 Warning(s).
 Target not created
-ed implicitly
-      DelayWait10ms(1000);
-main.c: 16 warnings, 3 errors
-compiling Graphics.c...
-Graphics.c(690): warning:  #177-D: variable "lx" was declared but never referenced
-        int32_t lx;
-Graphics.c(691): warning:  #177-D: variable "ly" was declared but never referenced
-        int32_t ly;
-Graphics.c(854): warning:  #1-D: last line of file ends without a newline
-        
-Graphics.c: 3 warnings, 0 errors
-compiling Time.c...
-Time.c(52): warning:  #550-D: variable "sr" was set but never used
-  void SysTick_Init(uint32_t period){long sr;
-Time.c: 1 warning, 0 errors
-".\ST7735.axf" - 3 Error(s), 20 Warning(s).
-Target not created
-735.axf" - 3 Error(s), 20 Warning(s).
+ation to list image symbols.
+Not enough information to list the image map.
+Finished: 2 information, 0 warning and 1 error messages.
+".\ST7735.axf" - 1 Error(s), 11 Warning(s).
 Target not created

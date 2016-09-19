@@ -1,11 +1,13 @@
-// Switch.h
-// Sept. 14, 2016
+#include <stdint.h>
 
-#ifndef Speaker_h
-#define Speaker_h 1
-typedef int bool;
+void PWM0A_Init(uint16_t period, uint16_t duty);
 
-//enables and disables the speaker 
-void SpeakerEnable(bool enable);
+void PWM0A_Duty(uint16_t duty);
 
-#endif
+void Sound_Init(void);
+
+void Sound_Off(void);
+
+void Sound_On(void);
+
+void sound_Play(void);
