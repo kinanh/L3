@@ -150,7 +150,7 @@ int main(void){uint32_t i;
 			time = whattime();  
 			sec = time%60;
 		}
-    time = whattime();  
+    		time = whattime();  //test comment
 		sec = time%60;
 		min = floor(time%(60*60)/60);
 		if (time<43200){
