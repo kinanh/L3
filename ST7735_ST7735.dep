@@ -14,14 +14,15 @@ I (C:\Keil\ARM\ARMCC\include\stdio.h)(0x51C87C24)
 I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x57D9F558)
 I (ST7735.h)(0x57DF25D6)
 F (.\fixed.h)(0x57DF25D7)()
-F (.\Speaker.c)(0x57DF2EE8)(-c --cpu Cortex-M4 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections --signed_chars -I.. -I..\..\.. --C99-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-Drvmdk -DPART_LM4F120H5QR-o .\speaker.o --omf_browse .\speaker.crf --depend .\speaker.d)
+F (.\Speaker.c)(0x57DF308E)(-c --cpu Cortex-M4 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections --signed_chars -I.. -I..\..\.. --C99-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-Drvmdk -DPART_LM4F120H5QR-o .\speaker.o --omf_browse .\speaker.crf --depend .\speaker.d)
 I (Speaker.h)(0x57DF2ED9)
 I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x57D9F558)
 I (inc/tm4c123gh6pm.h)(0x57DF25D7)
-F (.\Switch.c)(0x57DF2D5B)(-c --cpu Cortex-M4 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections --signed_chars -I.. -I..\..\.. --C99-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-Drvmdk -DPART_LM4F120H5QR-o .\switch.o --omf_browse .\switch.crf --depend .\switch.d)
+F (.\Switch.c)(0x57DF4483)(-c --cpu Cortex-M4 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections --signed_chars -I.. -I..\..\.. --C99-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-Drvmdk -DPART_LM4F120H5QR-o .\switch.o --omf_browse .\switch.crf --depend .\switch.d)
 I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x57D9F558)
 I (../inc/tm4c123gh6pm.h)(0x57C1C595)
-I (SysTick.h)(0x57C1C5AB)
+I (Switch.h)(0x57DF2D12)
+I (Time.h)(0x57DF25D7)
 F (.\main.c)(0x57DF25D7)(-c --cpu Cortex-M4 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections --signed_chars -I.. -I..\..\.. --C99-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-Drvmdk -DPART_LM4F120H5QR-o .\main.o --omf_browse .\main.crf --depend .\main.d)
 I (C:\Keil\ARM\ARMCC\include\stdio.h)(0x51C87C24)
 I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x57D9F558)
@@ -51,7 +52,3 @@ I (ST7735.h)(0x57DF25D6)
 I (C:\Keil\ARM\ARMCC\include\string.h)(0x51C87C24)
 F (.\Speaker.h)(0x57DF2ED9)()
 F (.\Switch.h)(0x57DF2D12)()
-F (.\SysTick.h)(0x57C1C5AB)()
-F (.\SysTick.c)(0x57C1C5AB)(-c --cpu Cortex-M4 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections --signed_chars -I.. -I..\..\.. --C99-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-Drvmdk -DPART_LM4F120H5QR-o .\systick.o --omf_browse .\systick.crf --depend .\systick.d)
-I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x57D9F558)
-I (../inc/tm4c123gh6pm.h)(0x57C1C595)
