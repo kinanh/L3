@@ -9,6 +9,7 @@
 #include "fixed.h"
 #include "ST7735.h"
 #include "string.h"
+#include "Switch.h"
 
 
 #define PF2             (*((volatile uint32_t *)0x40025010))
@@ -84,6 +85,10 @@ void Timer1_Init(void){
   TIMER1_CTL_R = 0x00000001;    // 10) enable TIMER1A
 }
 
+void Timer1A_Handler(void){
+  TIMER1_ICR_R = TIMER_ICR_TATOCINT;// acknowledge TIMER1A timeout
+	Buttons_Handler();
+}
 void Timer0A_Handler(void){
   TIMER0_ICR_R = TIMER_ICR_TATOCINT;    // acknowledge timer0A timeout
   PF2 ^= 0x04;                   // profile

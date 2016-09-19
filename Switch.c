@@ -32,7 +32,7 @@ void Buttons_Input(void) {
 		debounce[3] = ((data & 0x8) >> 3)*DELAY10MS;
 }
 
-int Buttons_Pressed(uint32_t button) {
+int32_t Buttons_Pressed(uint32_t button) {
 	if(button == 0){ return 0;}
 	if(button == 1){ return 1;}
 	if(button == 2){ return 2;}
