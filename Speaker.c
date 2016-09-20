@@ -41,6 +41,11 @@ void PWM0A_Init(uint16_t period, uint16_t duty){
 }
 // change duty cycle of PB6
 // duty is number of PWM clock cycles output is high  (2<=duty<=period-1)
+void Sound_On(void){
+	PWM0_0_CTL_R |= 0x00000001;           // 7) start PWM0
+  PWM0_ENABLE_R |= 0x00000001;
+ }
+
 void PWM0A_Duty(uint16_t duty){
   PWM0_0_CMPA_R = duty - 1;             // 6) count value when output rises
 }
@@ -52,11 +57,6 @@ void Sound_Init(void){
 void Sound_Off(void){
 	PWM0_0_CTL_R &= ~0x00000001;           // 7) start PWM0
   PWM0_ENABLE_R &= ~0x00000001;
- }
-
-void Sound_On(void){
-	PWM0_0_CTL_R |= 0x00000001;           // 7) start PWM0
-  PWM0_ENABLE_R |= 0x00000001;
  }
 
 void Sound_Play(int doplay){
