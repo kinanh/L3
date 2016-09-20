@@ -96,3 +96,6 @@ void Timer0A_Handler(void){
 int32_t whattime(void){
 	return count;
 }
+void UpdateCount(int32_t newval){
+	count = newval;
+}

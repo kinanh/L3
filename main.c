@@ -82,6 +82,15 @@ void PortF_Init(void);
 int32_t lastsec;
 int32_t lastmin;
 int32_t pm = 0;
+int32_t ad = 1; 
+
+int32_t alarm; //alarm in seconds from 00:00:00
+
+int32_t button1;
+int32_t button2;
+int32_t button3;
+int32_t button4;
+
 // Subroutine to wait 10 msec
 // Inputs: None
 // Outputs: None
@@ -131,9 +140,6 @@ int32_t getHr(int32_t t){int32_t h;
 	return h;
 }
 
-void timeSet(int32_t hr, int32_t min,int32_t sec){
-		
-}
 void UpdateAnalog(int32_t hr, int32_t min, int32_t sec){
 	if (sec != lastsec){
 				//draw second
@@ -166,16 +172,104 @@ void UpdateDigital(int32_t hr, int32_t min, int32_t sec){
 		}
 	}
 }
+//****************UpdateClock*************************
+// checks if digital or anolog mode is on and updates clock
+// ad = 1 is anolog mode
+// ad= 0 is digital mode
+void UpdateClock(int32_t hr, int32_t min, int32_t sec){
+	if (ad == 1){ //analog update
+		UpdateAnalog(hr,min,sec);
+	}else if (ad == 0){
+		UpdateDigital(hr,min,sec);
+	}
+}
+
+//**********************timeSet***************************
+// stops updating the clock face and allows user to change the current time
+// saves that time as the new count in time.c
+// exits and resumes updating clock
+// 
+void timeSet(int32_t time){
+		int32_t lastPushTime;	// time since last button activity 
+		int32_t ctime; 			  // currenttime, in seconds
+		int32_t newcount;			// new time variable, in seconds
+		int32_t hr=0;
+		int32_t min=0;
+		int32_t sec=0;
+		//printf "Set Time"
+		newcount = time - (time%60); 	// reset seconds to 0
+		hr = getHr(newcount);
+		sec = getSec(newcount);
+		min = getMin(newcount);		
+		UpdateClock(hr, min, sec);
+		while(ctime < (lastPushTime+10) ){
+		    ctime = whattime();
+				if (button1){
+					lastPushTime = whattime();
+					newcount = newcount + (60*60);
+					if (newcount>86399){
+							newcount= newcount-86400;
+					}
+					//if new count is greater than 86400, reset
+					hr = getHr(newcount);
+					UpdateClock(hr, min, sec);
+				}else if (button2){
+					lastPushTime = whattime();
+					newcount = newcount - (60*60);
+					if (newcount < 0 ){
+						newcount = (86400 + newcount);
+					}
+					hr = getHr(newcount);
+					UpdateClock(hr, min, sec);
+				}else if (button3){
+					lastPushTime = whattime();
+					newcount = newcount + 60;
+					if (newcount>86399){
+						newcount= newcount-86400;
+					}
+					hr = getHr(newcount);
+					min = getMin(newcount);
+					UpdateClock(hr, min, sec);
+				}else if (button4){
+					lastPushTime = whattime();
+					newcount = newcount - 60;
+					if (newcount < 0 ){
+						newcount = (86400 + newcount);
+					}
+					hr = getHr(newcount);
+					min = getMin(newcount);
+					UpdateClock(hr, min, sec);
+				}	 
+		}
+		//calculate new count
+		UpdateCount(newcount);			//save new count as count
+		//remove printf "Set Time"
+}
+//********************alarmSet*******************************
+//  updates alarm. allows user to select new time. saves new alarm time.
+// input: old alarm
+// output: none
+void alarmSet(int32_t alarm){
+		int32_t lastPushTime;	// time since last button activity 
+		int32_t ctime; 			  // currenttime
+		//printf "Set Alarm"
+		while(ctime < lastPushTime+10 ){
+		     ctime = whattime();
+				 
+		}
+		//remove printf "Set Alarm"
+}
+
 int main(void){uint32_t i;
-	int32_t time = 0;
+	int32_t time = 0;		// current time in seconds, always updating
 	int32_t min;
 	int32_t sec;
-	int32_t lasttime=0;
+	int32_t lasttime=0;	// the last time that was pushed to the clock face
 	int32_t hr;
-	int32_t state = 1; //1=analog,2=digital 3=set-time 4=set-alarm
-	int32_t rstate = 1;
-	int32_t ainit =0;
-	int32_t dinit = 0;
+	int32_t state = 1; 	//1=analog,2=digital 3=set-time 4=set-alarm
+	int32_t rstate = 1;	// the last state the clock was in, may be used to return from time set and alarm set
+	int32_t ainit =0;		// flag for analog clock initialization done 
+	int32_t dinit = 0;	// flab for digital clock intialization done
 	
   PLL_Init(Bus80MHz);
   PortF_Init();
@@ -197,19 +291,21 @@ int main(void){uint32_t i;
 	
   while(1){
 		while(time == lasttime){			// wait for whattime() to return a new value 
-			time = whattime();  			// whattime() returns the current time from in seconds, range 0 < time < 86400			
+			time = whattime();  				// whattime() returns the current time from in seconds, range 0 < time < 86400			
 		}
 		time = whattime();
 		if(time!=lasttime){
 		lasttime = time;
 		sec = getSec(time);
-		min = getMin(time);				// calculate minutes, range 0< min < 60
-		hr = getHr(time);
+		min = getMin(time);						// calculate minutes, range 0< min < 60
+		hr = getHr(time);							// calculates hours, range 0< hr<  60808
 		// ANALOG CLOCK MODE, CALLS UPDATE CLOCK ROUTINE
 		if (state == 1) {	
 		 if (ainit == 0){
 					DrawClockInit();
+					ad=1;
 					ainit=1;
+					dinit=0;
 			}
 			UpdateAnalog(hr, min, sec);
 		}
@@ -217,7 +313,9 @@ int main(void){uint32_t i;
 		if (state == 2) { 				// DIGITAL CLOCK MODE
 			if (dinit == 0){
 					DigitalInit();
+					ad=0;
 					dinit=1;
+					ainit=0; 
 			}
 			UpdateDigital(hr,min,sec);
 		}
@@ -227,9 +325,15 @@ int main(void){uint32_t i;
 		if (state == 3){
 			dinit=0;
 			ainit=0;
-			timeSet(hr,min,sec);
+			timeSet(time);
+			state = 1; // CHANGE!! state = laststate; 
 		}
 		//if button press, go into alarm menu;
+		if (state == 4){
+			dinit=0;
+			ainit=0;
+			alarmSet(time);
+		}
 	}
   } 
 } 

@@ -848,7 +848,7 @@ void DigitalHour(int32_t h){
 	h=12;
 	}
 	n2= '0'+ h;
-	if (h > 10){
+	if (h >= 10){
 	n1= 1+'0';
 	n2= (h-10)+'0';
 	}
@@ -859,19 +859,19 @@ void DigitalHour(int32_t h){
 void DigitalMinute(int32_t m){
 	char n1 = '0';
 	char n2 = '0';
-	if (m>50){
+	if (m>=50){
 		n1=5+'0';
 		m=m-50;
-	}else if (m>40){
+	}else if (m>=40){
 		n1=4+'0';
 		m=m-40;
-	}else if (m>30){
+	}else if (m>=30){
 		n1=3+'0';
 		m=m-30;
-	}else if (m>20){
+	}else if (m>=20){
 		n1=2+'0';
 		m=m-20;
-	}else if (m>10){
+	}else if (m>=10){
 		n1=1+'0';
 		m=m-10;
 	}

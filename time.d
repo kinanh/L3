@@ -7,4 +7,3 @@
 .\time.o: fixed.h
 .\time.o: ST7735.h
 .\time.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
-.\time.o: Switch.h

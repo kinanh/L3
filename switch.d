@@ -3,3 +3,4 @@
 .\switch.o: ../inc/tm4c123gh6pm.h
 .\switch.o: Switch.h
 .\switch.o: Time.h
+.\switch.o: boolean.h

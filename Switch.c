@@ -2,6 +2,7 @@
 #include "../inc/tm4c123gh6pm.h"
 #include "Switch.h"
 #include "Time.h"
+#include "boolean.h"
 #define DELAY10MS 160000
 bool debounce[4];
 
